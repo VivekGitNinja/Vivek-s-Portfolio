@@ -1,6 +1,6 @@
 /* Reset and Global Styles */
 :root {
-    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'TSCu_Comic', cursive;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
 
 * {
@@ -247,7 +247,7 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'TSCu_Comic', cursive;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     transition: all 0.3s ease;
 }
 
