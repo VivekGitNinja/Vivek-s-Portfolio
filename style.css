@@ -1,0 +1,80 @@
+/* Reset and Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    font-family: 'Outfit',
+        sans-serif;
+    --bg-color: rgba(5, 5, 5, 0.5);
+    /* Semi-transparent Black */
+    --snd-bg-color: rgba(10, 10, 10, 0.7);
+    /* Glassy Secondary */
+    --text-color: #e0e0e0;
+    --main-color: #3b82f6;
+    --accent-color: #64748b;
+    --hover-color: #2563eb;
+    --box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+#bg-3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #020202;
+    /* Deep Space Base */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    /* scroll-behavior: smooth;  <-- REMOVED to prevent conflict with Lenis */
+    font-family: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: transparent;
+    /* Let canvas show through */
+    color: var(--text-color);
+    padding: 0;
+}
+
+section {
+    min-height: 100vh;
+    padding: 8rem 9% 2rem;
+}
+
+
+/* Menu Icon */
+
+
+/* ScrollBar Design */
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
