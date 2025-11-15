@@ -78,3 +78,103 @@ section {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--hover-color);
 }
+
+
+/* Header Section (Holographic Command Deck) */
+
+/* Header Section (Floating Command Island) */
+
+/* Header Section (Dynamic Scroll System) */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    z-index: 100;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1.5rem 5%;
+    transition: 0.5s ease;
+}
+
+/* Floating Capsule State (Active on Scroll) */
+.header.scrolled {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(10, 10, 10, 0.8);
+    /* Deep Glass */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    /* Neon Rim */
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+}
+
+.header-content {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+/* Remove bottom Scanline for the Island look */
+.hud-line {
+    display: none;
+}
+
+/* Logo Glitch */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.logo-icon {
+    height: 35px;
+    width: 35px;
+    background: var(--gradient);
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    transition: 0.5s ease;
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(360deg);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    text-decoration: none;
+}
+
+.logo-text span {
+    color: var(--main-color);
+    font-weight: 400;
+}
