@@ -318,3 +318,183 @@ section {
     line-height: 1.6;
 }
 
+/* Social Media */
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin: 0 1.5rem 1.5rem 0;
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--main-color);
+    transform: translateY(-5px);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 15px var(--main-color);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    box-shadow: 0 0 30px var(--main-color);
+    background: #fff;
+    color: var(--main-color);
+}
+
+/* Scroll Down Beacon */
+.scroll-down {
+    position: absolute;
+    bottom: -100px;
+    /* Adjust based on viewport */
+    left: 0;
+}
+
+.scroll-down a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    text-decoration: none;
+    animation: floatImage 3s ease-in-out infinite;
+}
+
+.scroll-down i {
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+/* Holographic Profile (3D Core) */
+.hero-image-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    perspective: 1000px;
+    /* Enable 3D Depth */
+}
+
+.hero-3d-layer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* Key for 3D Tilt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease-out;
+    /* Smooth follow */
+}
+
+.hero-img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+    animation: morphShape 8s ease-in-out infinite;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transform: translateZ(50px);
+    /* Push forward */
+}
+
+.hero-ring {
+    position: absolute;
+    width: 110%;
+    /* Slightly larger */
+    height: 110%;
+    border: 2px dashed var(--main-color);
+    border-radius: 50%;
+    animation: spinRing 20s linear infinite;
+    z-index: 1;
+    opacity: 0.5;
+    transform: translateZ(20px);
+}
+
+.hero-glow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    transform: translateZ(-50px);
+    /* Push back */
+}
+
+/* Floating 3D Icons */
+.floating-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform-style: preserve-3d;
+    animation: floatIcon 4s ease-in-out infinite;
+    z-index: 5;
+}
+
+.icon-react {
+    top: -10%;
+    left: 10%;
+    animation-delay: 0s;
+    color: #61dafb;
+    transform: translateZ(100px);
+}
+
+.icon-js {
+    bottom: 10%;
+    right: -5%;
+    animation-delay: 1s;
+    color: #f7df1e;
+    transform: translateZ(80px);
+}
+
+.icon-node {
+    bottom: -10%;
+    left: 20%;
+    animation-delay: 2s;
+    color: #68a063;
+    transform: translateZ(120px);
+}
+
+.icon-code {
+    top: 20%;
+    right: -15%;
+    animation-delay: 1.5s;
+    color: #fff;
+    transform: translateZ(90px);
