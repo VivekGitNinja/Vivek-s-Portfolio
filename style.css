@@ -498,3 +498,153 @@ section {
     animation-delay: 1.5s;
     color: #fff;
     transform: translateZ(90px);
+}
+
+@keyframes floatIcon {
+
+    0%,
+    100% {
+        transform: translateZ(var(--z, 100px)) translateY(0);
+    }
+
+    50% {
+        transform: translateZ(var(--z, 100px)) translateY(-15px);
+    }
+}
+
+/* Animations */
+@keyframes morphShape {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+@keyframes spinRing {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+    .home {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        gap: 4rem;
+        padding-top: 12rem;
+    }
+
+    .home-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scroll-down {
+        display: none;
+    }
+
+    .hero-image-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hero-img {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+
+/* Social Media Icons */
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: .5s ease;
+}
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--snd-bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+
+/* About Section */
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    padding: 4rem 5%;
+}
+
+/* About Section (Quantum Glass Card) */
+.quantum-glass-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 2000px;
+    padding: 1rem 0;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+}
+
+/* --- WORLD-CLASS COMPACT ABOUT CARD --- */
+
+.about-god-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2.8rem 3rem;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(59, 130, 246, 0.05);
+}
+
+.about-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-content-wrapper .heading {
+    font-size: 3.8rem;
