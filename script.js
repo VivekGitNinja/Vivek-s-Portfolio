@@ -138,3 +138,83 @@ document.addEventListener("DOMContentLoaded", function () {
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
 
+        // Light
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0x3b82f6, 1.5);
+        pointLight.position.set(0, 2, 2);
+        scene.add(pointLight);
+
+        camera.position.z = 2;
+
+        // Mouse Parallax Interaction
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth - 0.5) * 0.5;
+            mouseY = (event.clientY / window.innerHeight - 0.5) * 0.5;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+
+        const tick = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            particlesMesh.rotation.y = elapsedTime * 0.03;
+            particlesMesh.rotation.x += (mouseY - particlesMesh.rotation.x) * 0.05;
+            particlesMesh.rotation.y += (mouseX - particlesMesh.rotation.y) * 0.05;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(tick);
+        };
+
+        tick();
+
+        // Responsive Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+    }
+
+    // --- 5. Interactive 3D Explosive Scattering Cubes & Inner Core Controller ---
+    const cubeWrappers = document.querySelectorAll('.service-cube-wrapper');
+    cubeWrappers.forEach(wrapper => {
+        const cube = wrapper.querySelector('.service-3d-cube');
+        const hint = wrapper.querySelector('.cube-click-hint');
+
+        function toggleScatter(e) {
+            // Prevent collapsing if clicking action button inside inner core
+            if (e.target.closest('.core-action-btn')) return;
+
+            const isScattered = wrapper.classList.contains('scattered');
+
+            // Close any other scattered cubes
+            cubeWrappers.forEach(w => {
+                w.classList.remove('scattered');
+                const h = w.querySelector('.cube-click-hint');
+                if (h) h.innerHTML = 'Click Cube to Scatter & Reveal <i class="bx bx-expand-alt"></i>';
+            });
+
+            if (!isScattered) {
+                wrapper.classList.add('scattered');
+                if (hint) hint.innerHTML = 'Close & Assemble Cube <i class="bx bx-collapse-alt"></i>';
+            }
+        }
+
+        if (cube) cube.addEventListener('click', toggleScatter);
+        if (hint) hint.addEventListener('click', toggleScatter);
+    });
+
+    const serviceCubes = document.querySelectorAll('.service-3d-cube, .tech-3d-cube');
+    serviceCubes.forEach(cube => {
+        let isDragging = false;
+        let startX = 0, startY = 0;
+        let currentRotX = 0, currentRotY = 0;
+
+        function startDrag(e) {
