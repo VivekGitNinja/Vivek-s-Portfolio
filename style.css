@@ -648,3 +648,203 @@ section {
 
 .about-content-wrapper .heading {
     font-size: 3.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-content-wrapper h3 {
+    font-size: 1.9rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+    max-width: 720px;
+    line-height: 1.35;
+}
+
+.about-text-body {
+    max-width: 780px;
+    margin-bottom: 2.2rem;
+    text-align: center;
+}
+
+.about-text-body p {
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 1.2rem;
+}
+
+.about-text-body p strong {
+    color: #fff;
+}
+
+.about-more-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    margin-top: 0;
+}
+
+.about-more-content.active {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+.btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--main-color);
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 0.8rem;
+}
+
+.btn-read-more:hover {
+    background: var(--main-color);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+.about-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 2.2rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-align: left;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.highlight-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);
+}
+
+.highlight-item i {
+    font-size: 2.2rem;
+    color: var(--main-color);
+    background: rgba(59, 130, 246, 0.12);
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.hi-text h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.hi-text span {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    display: block;
+}
+
+/* Glass Stats (Embedded) */
+.glass-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.g-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.g-stat span {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    line-height: 1;
+}
+
+.g-stat small {
+    font-size: 1rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.4rem;
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about {
+        padding: 3rem 4%;
+    }
+
+    .about-god-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .about-content-wrapper .heading {
+        font-size: 3.2rem;
+    }
+
+    .about-content-wrapper h3 {
+        font-size: 1.7rem;
+        margin-bottom: 1.4rem;
+    }
+
+    .about-text-body p {
+        font-size: 1.35rem;
+        line-height: 1.65;
+    }
+
+    .highlight-item {
+        padding: 1.2rem 1.4rem;
+    }
+}
+
+
+.quantum-btn {
+    width: fit-content;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--main-color);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.quantum-btn:hover {
+    background: var(--main-color);
