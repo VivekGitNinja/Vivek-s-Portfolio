@@ -298,3 +298,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeMobileMenu() {
         if (menuIcon) menuIcon.classList.remove('bx-x');
+        if (navbar) navbar.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+    }
+
+    if (menuIcon && navbar) {
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('bx-x');
+            navbar.classList.toggle('active');
+            if (navOverlay) navOverlay.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMobileMenu);
+        }
+    }
+
+    // --- 7. Hero Section Parallax Floating Elements ---
+    const homeSection = document.querySelector('.home');
+    const heroLayer = document.querySelector('.hero-3d-layer');
+
+    if (homeSection && heroLayer && window.innerWidth > 768) {
+        homeSection.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 30;
+            const y = (window.innerHeight / 2 - e.clientY) / 30;
+
+            heroLayer.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+
+            document.querySelectorAll('.floating-icon').forEach(icon => {
+                const speed = parseFloat(icon.getAttribute('data-speed')) || 2;
+                const xMove = (window.innerWidth / 2 - e.clientX) * (speed / 100);
+                const yMove = (window.innerHeight / 2 - e.clientY) * (speed / 100);
+
+                icon.style.transform = `translate3d(${xMove}px, ${yMove}px, 60px)`;
+            });
+        });
+
+        homeSection.addEventListener('mouseleave', () => {
+            heroLayer.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            document.querySelectorAll('.floating-icon').forEach(icon => {
+                icon.style.transform = 'translate3d(0, 0, 0)';
+            });
+        });
+    }
+
+    // --- 8. Read More Toggle (About Section) ---
+    const readMoreBtn = document.querySelector('.btn-read-more');
+    const moreContent = document.querySelector('.about-more-content');
+
+    if (readMoreBtn && moreContent) {
+        readMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moreContent.classList.toggle('active');
+            const isActive = moreContent.classList.contains('active');
+            readMoreBtn.innerHTML = isActive 
+                ? 'Read Less <i class="bx bx-chevron-up"></i>' 
+                : 'Read More <i class="bx bx-chevron-down"></i>';
+        });
+    }
+
+    // --- 9. FAQ Accordion Logic ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+        if (header) {
+            header.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                
+                // Close other accordion items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
