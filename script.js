@@ -218,3 +218,83 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentRotX = 0, currentRotY = 0;
 
         function startDrag(e) {
+            isDragging = true;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            startX = clientX;
+            startY = clientY;
+            cube.style.animationPlayState = 'paused';
+            cube.style.cursor = 'grabbing';
+        }
+
+        function moveDrag(e) {
+            if (!isDragging) return;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            const deltaX = clientX - startX;
+            const deltaY = clientY - startY;
+
+            currentRotY += deltaX * 0.8;
+            currentRotX -= deltaY * 0.8;
+
+            cube.style.transform = `rotateX(${currentRotX}deg) rotateY(${currentRotY}deg)`;
+            startX = clientX;
+            startY = clientY;
+        }
+
+        function stopDrag() {
+            if (isDragging) {
+                isDragging = false;
+                cube.style.cursor = 'grab';
+                setTimeout(() => {
+                    if (!isDragging) {
+                        cube.style.animationPlayState = 'running';
+                    }
+                }, 2500);
+            }
+        }
+
+        cube.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', moveDrag);
+        window.addEventListener('mouseup', stopDrag);
+
+        cube.addEventListener('touchstart', startDrag, { passive: true });
+        window.addEventListener('touchmove', moveDrag, { passive: true });
+        window.addEventListener('touchend', stopDrag);
+    });
+
+    if (window.innerWidth > 768) {
+        const tiltCards = document.querySelectorAll(
+            '.project-card, .timeline-content, .toolkit-3d-card, .community-3d-node, .edu-card, .cert-card, .github-stat-card'
+        );
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                card.style.transition = 'transform 0.1s ease-out';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.transition = 'transform 0.4s ease';
+            });
+        });
+    }
+
+    // --- 6. Mobile Navigation & Backdrop Overlay ---
+    const menuIcon = document.querySelector('#menu-icon');
+    const navbar = document.querySelector('.navbar');
+    const navOverlay = document.querySelector('#nav-overlay');
+
+    function closeMobileMenu() {
+        if (menuIcon) menuIcon.classList.remove('bx-x');
