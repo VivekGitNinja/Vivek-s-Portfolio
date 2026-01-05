@@ -1048,3 +1048,203 @@ section {
     100% {
         transform: translateY(0);
     }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.skills-box h3 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+/* 3D Solar System (Orbiting Icons) */
+.skill-orbit-container {
+    position: relative;
+    width: 150px;
+    /* Wider orbit */
+    height: 60px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.skill-orbit-container i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 2.5rem;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(5, 5, 5, 0.6);
+    box-shadow: 0 0 10px var(--main-color);
+
+    /* 
+       Orbit Math: 
+       calc(var(--i) * 90deg) distributes them.
+       translateZ(100px) pushes them out to ring edge.
+       We rotateY the CONTAINER to spin the ring.
+    */
+    transform: translate(-50%, -50%) rotateY(calc(var(--i) * 90deg)) translateZ(100px);
+}
+
+/* Spin the entire system of icons */
+.skill-orbit-container {
+    animation: spinOrbitSystem 15s linear infinite;
+}
+
+@keyframes spinOrbitSystem {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Mobile Adjustments for Technical Toolkit */
+@media (max-width: 768px) {
+    .skills-box {
+        height: 350px;
+    }
+
+    .platform-base {
+        width: 150px;
+        height: 150px;
+    }
+
+    .skill-orbit-container i {
+        transform: translate(-50%, -50%) rotateY(calc(var(--i) * 90deg)) translateZ(80px);
+    }
+}
+
+/* Experience Section (Neon Timeline) */
+
+.experience {
+    background: transparent;
+    padding: 8rem 5%;
+    min-height: 100vh;
+}
+
+.experience .heading {
+    margin-bottom: 5rem;
+}
+
+/* Experience Section (Neon Flux Timeline) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Central Neon Flux Line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: #fff;
+    box-shadow: 0 0 20px var(--main-color), 0 0 40px var(--main-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: 1;
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% {
+        opacity: 0.5;
+        box-shadow: 0 0 10px var(--main-color);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 30px var(--main-color), 0 0 60px var(--main-color);
+        background: var(--main-color);
+    }
+}
+
+.timeline-item {
+    padding: 20px 50px;
+    position: relative;
+    width: 50%;
+    background-color: transparent;
+    /* Animation handled by ScrollReveal */
+}
+
+/* Alternating Sides */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+/* Neon Energy Orbs (Dots) */
+.timeline-dot {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border-radius: 50%;
+    right: -12.5px;
+    top: 32px;
+    z-index: 10;
+    box-shadow: 0 0 20px var(--main-color);
+    border: 3px solid var(--main-color);
+    transition: 0.3s ease;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -12.5px;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    background: var(--main-color);
+    box-shadow: 0 0 40px var(--main-color), 0 0 80px var(--main-color);
+    border-color: #fff;
+}
+
+/* Date Tag */
+.timeline-date {
+    position: absolute;
+    top: 30px;
+    right: -180px;
+    width: 140px;
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--main-color);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    left: -180px;
+    text-align: right;
+}
+
+/* High-Fidelity Glass Content */
+.timeline-content {
+    padding: 2.5rem;
+    background: rgba(10, 10, 20, 0.6);
