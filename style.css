@@ -1248,3 +1248,253 @@ section {
 .timeline-content {
     padding: 2.5rem;
     background: rgba(10, 10, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
+}
+
+.timeline-content:hover {
+    background: rgba(15, 20, 40, 0.8);
+    border-color: var(--main-color);
+    transform: translateY(-10px) scale(1.02) translateZ(50px);
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+}
+
+/* Connector Arrows */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    right: -15px;
+    width: 30px;
+    height: 4px;
+    background: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    z-index: -1;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -15px;
+}
+
+.timeline-content h3 {
+    font-size: 2.4rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-org {
+    font-size: 1.6rem;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-content ul {
+    list-style: none;
+    text-align: left;
+    /* Always left align text for readability */
+}
+
+.timeline-content ul li {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.timeline-content ul li::before {
+    content: '⚡';
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+    color: var(--main-color);
+    top: 5px;
+}
+
+/* Animation Delays */
+.timeline-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.timeline-item:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
+/* Responsive Timeline */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+        text-align: left;
+        /* Reset text align */
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-dot {
+        left: 18px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 18px;
+    }
+
+    .timeline-date {
+        position: relative;
+        top: -10px;
+        left: 0;
+        right: auto;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-content::before {
+        left: -40px;
+        width: 40px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -40px;
+    }
+}
+
+/* Projects Section (Cinematic Gallery) */
+
+.projects {
+    background: transparent;
+    padding: 8rem 5%;
+}
+
+.projects .heading {
+    margin-bottom: 5rem;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+/* Holographic Portal Card */
+.project-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 320px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #000;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(59, 130, 246, 0.5);
+    z-index: 10;
+    pointer-events: none;
+    transition: 0.5s;
+    opacity: 0.5;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(59, 130, 246, 0.2);
+    border-color: var(--main-color);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+    border-style: solid;
+    box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s ease;
+    filter: grayscale(40%) contrast(110%);
+}
+
+.project-card:hover .project-img img {
+    transform: scale(1.2);
+    filter: grayscale(0%) contrast(120%);
+}
+
+/* Holographic Overlay */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 10%, rgba(59, 130, 246, 0.1) 80%, transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tech Scanline Animation */
+.project-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    animation: scanProject 2s linear infinite;
+    display: none;
+}
+
+.project-card:hover .project-overlay::after {
+    display: block;
+}
+
+@keyframes scanProject {
