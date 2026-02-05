@@ -1748,3 +1748,253 @@ section {
 .float-anim-3 {
     animation: subtleFloat 6s ease-in-out infinite 1s;
 }
+
+.stat-label {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.edu-achievements {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.edu-achievements h4 {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
+.edu-achievements p {
+    font-size: 1.4rem;
+    color: #aaa;
+}
+
+/* Keyframes */
+@keyframes spinRing {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scanSweep {
+
+    0%,
+    100% {
+        left: -100%;
+    }
+
+    50% {
+        left: 200%;
+    }
+
+    /* Sweep across clearly */
+}
+
+@keyframes subtleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Education */
+@media (max-width: 768px) {
+    .edu-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 2rem;
+        gap: 3rem;
+    }
+
+    .edu-info-row {
+        justify-content: center;
+    }
+
+    .edu-stats-grid {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
+/* Certifications Section (Digital Vault with Holographic Reveal) */
+
+.certifications {
+    background: transparent;
+    padding: 8rem 5%;
+}
+
+.certifications-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    padding: 0 2rem;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s ease;
+    animation: borderPulse 4s infinite alternate;
+    will-change: transform;
+    /* GPU Optimization */
+}
+
+/* Float Animation Delays */
+.cert-card:nth-child(1) {
+    animation: floatCard 6s ease-in-out infinite, borderPulse 4s infinite alternate;
+}
+
+.cert-card:nth-child(2) {
+    animation: floatCard 6s ease-in-out infinite 1.5s, borderPulse 4s infinite alternate 1s;
+}
+
+.cert-card:nth-child(3) {
+    animation: floatCard 6s ease-in-out infinite 3s, borderPulse 4s infinite alternate 2s;
+}
+
+.cert-card:nth-child(4) {
+    animation: floatCard 6s ease-in-out infinite 4.5s, borderPulse 4s infinite alternate 3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--main-color);
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+    animation-play-state: paused;
+}
+
+/* Image Wrapper (The Portal) */
+.cert-img-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.cert-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+    opacity: 0.6;
+    filter: blur(4px) grayscale(50%);
+    /* Privacy Glass Effect */
+}
+
+.cert-card:hover .cert-img-wrapper img {
+    opacity: 1;
+    filter: blur(0px) grayscale(0%);
+    /* Reveal Image */
+    transform: scale(1.1);
+}
+
+/* Overlay & Content */
+.cert-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(59, 130, 246, 0.1) 80%, transparent);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    transition: 0.5s ease;
+}
+
+.cert-card:hover .cert-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.4) 60%, transparent);
+}
+
+.cert-content {
+    margin-bottom: 2rem;
+    transition: 0.5s ease;
+    transform: translateY(20px);
+}
+
+.cert-card:hover .cert-content {
+    transform: translateY(0);
+}
+
+.cert-content h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0.5rem 0;
+    font-weight: 700;
+}
+
+.cert-issuer {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59, 130, 246, 0.2);
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Link Button */
+.cert-link {
+    display: inline-block;
+    padding: 1rem 0;
+    color: var(--main-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    text-align: center;
+    transform: translateY(100px);
+    /* Hidden initially */
+    transition: 0.5s ease;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.cert-card:hover .cert-link {
+    transform: translateY(0);
+    /* Slide Up Reveal */
+}
+
+.cert-link:hover {
