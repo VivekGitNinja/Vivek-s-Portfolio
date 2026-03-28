@@ -378,3 +378,143 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!isOpen) {
                     item.classList.add('active');
                 }
+            });
+        }
+    });
+
+    // --- 10. Typed.js Hero Title Animation ---
+    if (document.querySelector('.multiple-text') && typeof Typed !== "undefined") {
+        new Typed('.multiple-text', {
+            strings: [
+                'Developer Relations Manager',
+                'Web Developer',
+                'Tech Enthusiast',
+                'Full-Stack Developer'
+            ],
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 1600,
+            loop: true
+        });
+    }
+
+    // --- 11. Floating Header Capsule on Scroll ---
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // --- 12. EmailJS & Direct Contact Form Handler ---
+    const contactForm = document.getElementById("contact-form");
+    const statusMsg = document.getElementById("status-message");
+
+    if (contactForm) {
+        if (typeof emailjs !== 'undefined') {
+            try {
+                emailjs.init("pxMeZnYhCPCs8V3ir");
+            } catch (e) {
+                console.warn("EmailJS init warning:", e);
+            }
+        }
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+
+            const senderName = nameInput ? nameInput.value.trim() : '';
+            const senderEmail = emailInput ? emailInput.value.trim() : '';
+            const messageText = messageInput ? messageInput.value.trim() : '';
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.innerHTML : 'Send Message';
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="bx bx-loader-alt bx-spin"></i>';
+            }
+
+            if (statusMsg) {
+                statusMsg.className = 'status-loading';
+                statusMsg.textContent = 'Transmitting message...';
+            }
+
+            const templateParams = {
+                from_name: senderName,
+                from_email: senderEmail,
+                to_name: 'Vivek Kumar Verma',
+                name: senderName,
+                email: senderEmail,
+                user_name: senderName,
+                user_email: senderEmail,
+                reply_to: senderEmail,
+                message: messageText
+            };
+
+            const fallbackMailto = () => {
+                const subject = encodeURIComponent(`Portfolio Message from ${senderName}`);
+                const body = encodeURIComponent(`Name: ${senderName}\nEmail: ${senderEmail}\n\nMessage:\n${messageText}`);
+                window.location.href = `mailto:vkumarverma670@gmail.com?subject=${subject}&body=${body}`;
+
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Mail Client Opened <i class="bx bx-envelope"></i>';
+                }
+                if (statusMsg) {
+                    statusMsg.className = 'status-success';
+                    statusMsg.textContent = 'Opening your mail application... You can also email directly to vkumarverma670@gmail.com';
+                }
+                setTimeout(() => {
+                    if (submitBtn) submitBtn.innerHTML = originalText;
+                }, 4000);
+            };
+
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send('vivek_git5', 'template_h3r3gob', templateParams)
+                    .then(() => {
+                        if (submitBtn) {
+                            submitBtn.innerHTML = 'Sent! <i class="bx bx-check-circle"></i>';
+                        }
+                        if (statusMsg) {
+                            statusMsg.className = 'status-success';
+                            statusMsg.textContent = 'Message successfully delivered! Vivek will get back to you shortly.';
+                        }
+                        contactForm.reset();
+
+                        setTimeout(() => {
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalText;
+                            }
+                            if (statusMsg) {
+                                statusMsg.textContent = '';
+                                statusMsg.className = '';
+                            }
+                        }, 5000);
+                    })
+                    .catch((err) => {
+                        console.error('EmailJS Error, switching to mailto fallback:', err);
+                        fallbackMailto();
+                    });
+            } else {
+                fallbackMailto();
+            }
+        });
+    }
+
+    // --- 13. Top Scroll Progress Bar Controller ---
+    window.addEventListener('scroll', () => {
+        const progressBar = document.getElementById('scroll-progress-bar');
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        }
+    });
