@@ -518,3 +518,163 @@ document.addEventListener("DOMContentLoaded", function () {
             progressBar.style.width = scrolled + '%';
         }
     });
+
+    // --- 14. Interactive Project Category Filters ---
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card, .project-card-3d');
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const filter = tab.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // --- 15. Cyberpunk Command Palette (Cmd + K / Ctrl + K) ---
+    const cmdKTrigger = document.getElementById('cmd-k-trigger');
+    const cmdKModal = document.getElementById('cmd-k-modal');
+    const cmdKInput = document.getElementById('cmd-k-input');
+    const cmdKResults = document.getElementById('cmd-k-results');
+
+    const commandsList = [
+        { title: 'Go to Home', icon: 'bx-home-alt', type: 'Navigate', action: () => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Technical Toolkit (3D)', icon: 'bx-code-curly', type: 'Navigate', action: () => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Work Experience', icon: 'bx-briefcase', type: 'Navigate', action: () => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Community & Leadership', icon: 'bx-group', type: 'Navigate', action: () => document.getElementById('community')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Core Services (3D)', icon: 'bx-layer', type: 'Navigate', action: () => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Featured Projects', icon: 'bx-folder', type: 'Navigate', action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Project: NX-913 Platform (Flagship)', icon: 'bx-star', type: 'Project', action: () => window.open('https://nx-913.com', '_blank') },
+        { title: 'Project: Veda-AI Academic Platform', icon: 'bx-brain', type: 'Project', action: () => window.open('https://veda-ai-frontend-liard.vercel.app', '_blank') },
+        { title: 'Project: TradeJack Trading Terminal', icon: 'bx-candlestick', type: 'Project', action: () => window.open('https://github.com/VivekGitNinja/TradeJack', '_blank') },
+        { title: 'Project: Multi-Disease AI Predictor', icon: 'bx-plus-medical', type: 'Project', action: () => window.open('https://github.com/VivekGitNinja/Medical-Diagnosis-using-Ai-main', '_blank') },
+        { title: 'Project: E-Commerce Multivendor Platform', icon: 'bx-shopping-bag', type: 'Project', action: () => window.open('https://github.com/VivekGitNinja/Ecommerce-Multivendor', '_blank') },
+        { title: 'Project: Real Estate Management System', icon: 'bxs-home-alt-2', type: 'Project', action: () => window.open('https://github.com/VivekGitNinja/Real-Estate-management-system', '_blank') },
+        { title: 'Project: Movie Buff Central', icon: 'bx-film', type: 'Project', action: () => window.open('https://vivekgitninja.github.io/Movie-Buff-Central/', '_blank') },
+        { title: 'Project: Cricket Legends Hub', icon: 'bx-bar-chart-alt-2', type: 'Project', action: () => window.open('https://github.com/VivekGitNinja/Cricket-Legends-Hub', '_blank') },
+        { title: 'Project: Faculty Book System', icon: 'bxl-java', type: 'Project', action: () => window.open('https://vivekgitninja.github.io/Faculty-Book-System/', '_blank') },
+        { title: 'Go to Certifications Vault', icon: 'bx-award', type: 'Navigate', action: () => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Go to Contact Uplink', icon: 'bx-envelope', type: 'Navigate', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
+        { title: 'Download Resume PDF', icon: 'bx-download', type: 'Download', action: () => window.open('./assets/VIVEK KUMAR VERMA__Resume.pdf', '_blank') },
+        { title: 'Copy Email to Clipboard', icon: 'bx-copy', type: 'Action', action: () => { navigator.clipboard.writeText('vkumarverma670@gmail.com'); alert('Email vkumarverma670@gmail.com copied to clipboard!'); } },
+        { title: 'Visit GitHub Profile', icon: 'bxl-github', type: 'External', action: () => window.open('https://github.com/VivekGitNinja', '_blank') },
+        { title: 'Visit LinkedIn Profile', icon: 'bxl-linkedin', type: 'External', action: () => window.open('https://www.linkedin.com/in/vivekumarverma', '_blank') }
+    ];
+
+    let selectedCmdIndex = 0;
+
+    function renderCmdResults(query = '') {
+        if (!cmdKResults) return;
+        cmdKResults.innerHTML = '';
+        const filtered = commandsList.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
+
+        if (filtered.length === 0) {
+            cmdKResults.innerHTML = '<div style="padding: 1.5rem; text-align: center; color: #94a3b8; font-size: 1.4rem;">No matching commands found.</div>';
+            return;
+        }
+
+        filtered.forEach((cmd, idx) => {
+            const item = document.createElement('div');
+            item.className = `cmd-k-item ${idx === selectedCmdIndex ? 'selected' : ''}`;
+            item.innerHTML = `
+                <div class="cmd-k-item-left">
+                    <i class="bx ${cmd.icon}"></i>
+                    <span>${cmd.title}</span>
+                </div>
+                <span class="cmd-k-shortcut">${cmd.type}</span>
+            `;
+            item.addEventListener('click', () => {
+                cmd.action();
+                closeCmdK();
+            });
+            cmdKResults.appendChild(item);
+        });
+    }
+
+    function openCmdK() {
+        if (cmdKModal) {
+            cmdKModal.classList.add('active');
+            cmdKInput.value = '';
+            selectedCmdIndex = 0;
+            renderCmdResults();
+            setTimeout(() => cmdKInput?.focus(), 100);
+        }
+    }
+
+    function closeCmdK() {
+        if (cmdKModal) {
+            cmdKModal.classList.remove('active');
+        }
+    }
+
+    if (cmdKTrigger) cmdKTrigger.addEventListener('click', openCmdK);
+
+    window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            if (cmdKModal?.classList.contains('active')) {
+                closeCmdK();
+            } else {
+                openCmdK();
+            }
+        } else if (e.key === 'Escape' && cmdKModal?.classList.contains('active')) {
+            closeCmdK();
+        }
+    });
+
+    if (cmdKModal) {
+        cmdKModal.addEventListener('click', (e) => {
+            if (e.target === cmdKModal) closeCmdK();
+        });
+    }
+
+    if (cmdKInput) {
+        cmdKInput.addEventListener('input', (e) => {
+            selectedCmdIndex = 0;
+            renderCmdResults(e.target.value);
+        });
+
+        cmdKInput.addEventListener('keydown', (e) => {
+            const items = cmdKResults?.querySelectorAll('.cmd-k-item');
+            if (!items || items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedCmdIndex = (selectedCmdIndex + 1) % items.length;
+                renderCmdResults(cmdKInput.value);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedCmdIndex = (selectedCmdIndex - 1 + items.length) % items.length;
+                renderCmdResults(cmdKInput.value);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = cmdKInput.value;
+                const filtered = commandsList.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
+                if (filtered[selectedCmdIndex]) {
+                    filtered[selectedCmdIndex].action();
+                    closeCmdK();
+                }
+            }
+        });
+    }
+
+    // --- 16. Project Quick View Modal Controller ---
+    const projectQuickViewBtns = document.querySelectorAll('.project-quickview-btn');
+    const projectModal = document.getElementById('project-modal');
+    const projectModalClose = document.getElementById('project-modal-close');
