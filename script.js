@@ -678,3 +678,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectQuickViewBtns = document.querySelectorAll('.project-quickview-btn');
     const projectModal = document.getElementById('project-modal');
     const projectModalClose = document.getElementById('project-modal-close');
+    const projectModalBody = document.getElementById('project-modal-body');
+
+    const projectDataMap = {
+        '1': {
+            title: 'NX-913 Event & Hackathon Platform',
+            category: 'Full-Stack · AI-Powered Flagship Platform',
+            img: 'assets/project_nx913.jpg',
+            desc: 'Production-ready event management platform with RBAC authentication, Redis caching, BullMQ background queues, and Gemini 1.5 Pro RAG assistance. Achieved 100 SEO on Lighthouse.',
+            features: [
+                'Next.js 15 App Router & React interactive frontend',
+                'RESTful APIs with JWT & Role-Based Access Control',
+                'MongoDB data models with Redis caching & BullMQ queues',
+                'Gemini 1.5 Pro AI RAG assistance with multi-provider failover'
+            ],
+            live: 'https://nx-913.com',
+            github: 'https://github.com/VivekGitNinja'
+        },
+        '2': {
+            title: 'Veda-AI Academic Assessment Creator',
+            category: 'AI Academic Assessment Platform',
+            img: 'assets/project_veda_ai.jpg',
+            desc: 'Full-stack AI assessment & question paper creator platform built with Next.js 16, TypeScript, Node.js, MongoDB, Redis + BullMQ queues, WebSockets, and Google Gemini RAG API.',
+            features: [
+                'Next.js 16 (App Router, Turbopack) & TypeScript monorepo',
+                'BullMQ queue background worker & WebSockets real-time pipeline',
+                'Google Gemini RAG paper generator with mock fallback',
+                'A4 PDF export via jsPDF & institutional branding'
+            ],
+            live: 'https://veda-ai-frontend-liard.vercel.app',
+            github: 'https://github.com/VivekGitNinja/Veda-AI'
+        },
+        '3': {
+            title: 'TradeJack Trading Terminal',
+            category: 'Full-Stack Fintech Terminal',
+            img: 'assets/project_tradejack.jpg',
+            desc: 'High-frequency trading terminal interface featuring live order books, portfolio trackers, technical indicators, and order entries.',
+            features: [
+                'Real-time order book & position tracker',
+                'Technical market indicators (RSI, MACD, Bollinger Bands)',
+                'Modular financial API integration'
