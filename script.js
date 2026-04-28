@@ -718,3 +718,63 @@ document.addEventListener("DOMContentLoaded", function () {
                 'Real-time order book & position tracker',
                 'Technical market indicators (RSI, MACD, Bollinger Bands)',
                 'Modular financial API integration'
+            ],
+            live: 'https://github.com/VivekGitNinja/TradeJack',
+            github: 'https://github.com/VivekGitNinja/TradeJack'
+        },
+        '4': {
+            title: 'Multi-Disease Prediction System',
+            category: 'Machine Learning · AI Web App',
+            img: 'assets/project_disease.jpg',
+            desc: 'Interactive ML web application for early risk prediction of diabetes, heart disease, and Parkinson’s using scikit-learn models and Streamlit.',
+            features: [
+                'Trained Classification Models (Support Vector Classifier / Logistic Regression)',
+                'Real-time user parameter inference pipeline',
+                'Clean interactive Streamlit dashboard'
+            ],
+            live: 'https://github.com/VivekGitNinja/Medical-Diagnosis-using-Ai-main',
+            github: 'https://github.com/VivekGitNinja/Medical-Diagnosis-using-Ai-main'
+        },
+        '5': {
+            title: 'E-Commerce Multivendor Platform',
+            category: 'Full-Stack · E-Commerce Platform',
+            img: 'assets/project_ecommerce.jpg',
+            desc: 'Multivendor e-commerce application supporting buyer/seller portals, product management, order processing, and administrative dashboards.',
+            features: [
+                'Modular PHP & MySQLi backend architecture',
+                'Multi-role access (Sellers, Buyers, Admin)',
+                'Responsive Bootstrap storefront UI'
+            ],
+            live: 'https://github.com/VivekGitNinja/Ecommerce-Multivendor',
+            github: 'https://github.com/VivekGitNinja/Ecommerce-Multivendor'
+        },
+        '6': {
+            title: 'Real Estate Management System',
+            category: 'Full-Stack Web Application',
+            img: 'assets/project_realestate.jpg',
+            desc: 'Full-stack property listing and real estate portal with search filtering, agent inquiries, and admin property management.',
+            features: [
+                'React frontend with Node.js & Express REST API',
+                'Dynamic search & price range filtering',
+                'MongoDB property database'
+            ],
+            live: 'https://github.com/VivekGitNinja/Real-Estate-management-system',
+            github: 'https://github.com/VivekGitNinja/Real-Estate-management-system'
+        },
+        '7': {
+            title: 'Movie Buff Central',
+            category: 'Interactive Web Application',
+            img: 'assets/project_moviebuff.jpg',
+            desc: 'Immersive movie discovery portal featuring trailer embeds, movie trivia, daily quotes, and REST API integration.',
+            features: [
+                'Third-party Movie API integration',
+                'Interactive trailer popup modal',
+                'Responsive CSS Grid layout'
+            ],
+            live: 'https://vivekgitninja.github.io/Movie-Buff-Central/',
+            github: 'https://github.com/VivekGitNinja/Movie-Buff-Central'
+        },
+        '8': {
+            title: 'Cricket Legends Hub',
+            category: 'Data Visualization & Analytics',
+            img: 'assets/project_cricket.jpg',
