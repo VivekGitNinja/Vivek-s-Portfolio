@@ -778,3 +778,89 @@ document.addEventListener("DOMContentLoaded", function () {
             title: 'Cricket Legends Hub',
             category: 'Data Visualization & Analytics',
             img: 'assets/project_cricket.jpg',
+            desc: 'Data visualization web portal providing interactive player statistics, career charts, and match analytics.',
+            features: [
+                'Interactive statistical charts and timelines',
+                'Career records and milestone highlights'
+            ],
+            live: 'https://github.com/VivekGitNinja/Cricket-Legends-Hub',
+            github: 'https://github.com/VivekGitNinja/Cricket-Legends-Hub'
+        },
+        '9': {
+            title: 'Faculty Book Management System',
+            category: 'Java Desktop GUI Application',
+            img: 'assets/project_faculty.jpg',
+            desc: 'Desktop GUI application engineered in Java Swing and MySQL for academic book cataloging, issuing records, and faculty authentication.',
+            features: [
+                'Java Swing GUI desktop interface',
+                'MySQL relational database integration',
+                'Book issuing and catalog search records'
+            ],
+            live: 'https://vivekgitninja.github.io/Faculty-Book-System/',
+            github: 'https://github.com/VivekGitNinja/Faculty-Book-System'
+        }
+    };
+
+    projectQuickViewBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.getAttribute('data-project');
+            const data = projectDataMap[id];
+            if (data && projectModalBody) {
+                projectModalBody.innerHTML = `
+                    <span class="modal-proj-cat">${data.category}</span>
+                    <h2 class="modal-proj-title">${data.title}</h2>
+                    <img src="${data.img}" alt="${data.title}" class="modal-proj-img">
+                    <p class="modal-proj-desc">${data.desc}</p>
+                    <ul class="modal-proj-features">
+                        ${data.features.map(f => `<li><i class="bx bx-check-circle"></i> ${f}</li>`).join('')}
+                    </ul>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="${data.live}" target="_blank" rel="noopener noreferrer" class="project-live-btn">Launch Live Application <i class="bx bx-link-external"></i></a>
+                        <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="project-github-btn">GitHub Repository <i class="bx bxl-github"></i></a>
+                    </div>
+                `;
+                projectModal?.classList.add('active');
+            }
+        });
+    });
+
+    if (projectModalClose) {
+        projectModalClose.addEventListener('click', () => projectModal?.classList.remove('active'));
+    }
+    if (projectModal) {
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) projectModal.classList.remove('active');
+        });
+    }
+
+    // --- 17. Certificate Full-Screen Preview Modal Controller ---
+    const certCards = document.querySelectorAll('.cert-card');
+    const certModal = document.getElementById('cert-modal');
+    const certModalClose = document.getElementById('cert-modal-close');
+    const certModalImg = document.getElementById('cert-modal-img');
+    const certModalCaption = document.getElementById('cert-modal-caption');
+
+    certCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            const title = card.querySelector('h3')?.innerText || 'Certification';
+            const issuer = card.querySelector('.cert-issuer')?.innerText || '';
+
+            if (img && certModalImg) {
+                certModalImg.src = img.src;
+                if (certModalCaption) certModalCaption.innerText = `${title} (${issuer})`;
+                certModal?.classList.add('active');
+            }
+        });
+    });
+
+    if (certModalClose) {
+        certModalClose.addEventListener('click', () => certModal?.classList.remove('active'));
+    }
+    if (certModal) {
+        certModal.addEventListener('click', (e) => {
+            if (e.target === certModal) certModal.classList.remove('active');
+        });
+    }
+});
