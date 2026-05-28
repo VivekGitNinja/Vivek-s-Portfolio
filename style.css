@@ -4998,3 +4998,403 @@ section {
     background: rgba(59, 130, 246, 0.2);
     color: #fff;
     transform: translateX(4px);
+}
+
+.cmd-k-shortcut {
+    font-size: 1.1rem;
+    color: #64748b;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+}
+
+.cmd-k-footer {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 1.8rem;
+    background: rgba(2, 6, 23, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 1.2rem;
+    color: #64748b;
+}
+
+.cmd-k-footer kbd {
+    background: rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+/* --- PROJECT CATEGORY FILTERS & QUICK VIEW BUTTONS --- */
+.project-filter-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+}
+
+.filter-tab {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    padding: 0.8rem 1.8rem;
+    border-radius: 20px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.filter-tab:hover,
+.filter-tab.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.project-quickview-btn {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: #60a5fa;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.project-quickview-btn:hover {
+    background: var(--main-color);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+/* --- QUICK VIEW & CERTIFICATE MODAL STYLING --- */
+.project-modal-overlay,
+.cert-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 10008;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.project-modal-overlay.active,
+.cert-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-modal-card {
+    position: relative;
+    width: 90%;
+    max-width: 750px;
+    max-height: 85vh;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(59, 130, 246, 0.3);
+    padding: 3rem 2.5rem;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-modal-overlay.active .project-modal-card {
+    transform: scale(1);
+}
+
+.cert-modal-card {
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.cert-modal-card img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.cert-modal-caption {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    background: #ef4444;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+/* Quick View Modal Inner Content Styling */
+.modal-proj-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.modal-proj-cat {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.6rem;
+    display: block;
+}
+
+.modal-proj-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.8rem;
+}
+
+.modal-proj-desc {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+.modal-proj-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.modal-proj-features li {
+    font-size: 1.4rem;
+    color: #cbd5e1;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.modal-proj-features li i {
+    color: #34d399;
+    font-size: 1.7rem;
+    margin-top: 2px;
+}
+
+/* --- GOD-LEVEL 3D HOLOGRAPHIC PROJECT CARDS --- */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    width: 100%;
+    perspective: 1000px;
+}
+
+.project-card-3d {
+    position: relative;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform-style: preserve-3d;
+}
+
+.project-card-3d:hover {
+    transform: translateY(-10px) rotateX(4deg) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.3), inset 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.project-card-3d.featured-flagship {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.project-card-banner {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.featured-flagship .project-card-banner {
+    height: 100%;
+    min-height: 300px;
+}
+
+.project-card-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.project-card-3d:hover .project-card-banner img {
+    transform: scale(1.08);
+}
+
+.project-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%);
+}
+
+.project-top-badges {
+    position: absolute;
+    top: 1.4rem;
+    left: 1.4rem;
+    right: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 5;
+}
+
+.project-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.project-badge.flagship {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+}
+
+.project-badge.metric {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    color: #60a5fa;
+}
+
+.project-badge.ai {
+    background: rgba(139, 92, 246, 0.85);
+    color: #fff;
+}
+
+.project-badge.ecom {
+    background: rgba(16, 185, 129, 0.85);
+    color: #fff;
+}
+
+.project-badge.mern {
+    background: rgba(59, 130, 246, 0.85);
+    color: #fff;
+}
+
+.project-badge.api {
+    background: rgba(236, 72, 153, 0.85);
+    color: #fff;
+}
+
+.project-badge.analytics {
+    background: rgba(245, 158, 11, 0.85);
+    color: #fff;
+}
+
+.project-badge.java {
+    background: rgba(239, 68, 68, 0.85);
+    color: #fff;
+}
+
+.project-card-body {
+    padding: 2.2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.project-cat-tag {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--main-color);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+}
+
+.project-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.project-description {
+    font-size: 1.4rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+}
+
+.project-card-body .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
