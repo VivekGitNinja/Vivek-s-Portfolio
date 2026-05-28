@@ -5398,3 +5398,220 @@ section {
     gap: 0.6rem;
     margin-bottom: 2rem;
 }
+
+.project-card-body .tech-tags span {
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    color: #93c5fd;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.project-card-body .tech-tags span i {
+    font-size: 1.3rem;
+    color: var(--main-color);
+}
+
+.project-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.project-github-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.project-github-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.project-quickview-btn {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #60a5fa;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.project-quickview-btn:hover {
+    background: var(--main-color);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.project-live-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+}
+
+.project-live-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
+}
+
+/* --- MOBILE RESPONSIVENESS & BREAKPOINTS --- */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 1100px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .project-card-3d.featured-flagship {
+        grid-column: span 2;
+        grid-template-columns: 1fr;
+    }
+
+    .featured-flagship .project-card-banner {
+        height: 250px;
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-card-3d.featured-flagship {
+        grid-column: span 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-card-banner,
+    .featured-flagship .project-card-banner {
+        height: 200px;
+        min-height: 200px;
+    }
+
+    .project-card-body {
+        padding: 1.8rem 1.4rem;
+    }
+
+    .project-title {
+        font-size: 1.9rem;
+    }
+
+    .project-description {
+        font-size: 1.3rem;
+    }
+
+    .project-card-actions {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .project-quickview-btn,
+    .project-live-btn,
+    .project-github-btn {
+        flex: 1 1 calc(50% - 0.4rem);
+        justify-content: center;
+        padding: 0.7rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    .project-filter-tabs {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .filter-tab {
+        padding: 0.7rem 1.4rem;
+        font-size: 1.2rem;
+    }
+
+    .project-modal-card {
+        padding: 2rem 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-proj-title {
+        font-size: 2.1rem;
+    }
+
+    .modal-close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .project-quickview-btn,
+    .project-live-btn,
+    .project-github-btn {
+        width: 100%;
+        flex: 1 1 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .project-badge {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .project-top-badges {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+    }
+
+    .project-card-body .tech-tags span {
+        font-size: 1.05rem;
+        padding: 0.35rem 0.7rem;
+    }
+}
+
+
