@@ -571,7 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { title: 'Project: Faculty Book System', icon: 'bxl-java', type: 'Project', action: () => window.open('https://vivekgitninja.github.io/Faculty-Book-System/', '_blank') },
         { title: 'Go to Certifications Vault', icon: 'bx-award', type: 'Navigate', action: () => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' }) },
         { title: 'Go to Contact Uplink', icon: 'bx-envelope', type: 'Navigate', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
-        { title: 'Download Resume PDF', icon: 'bx-download', type: 'Download', action: () => window.open('./assets/VIVEK KUMAR VERMA__Resume.pdf', '_blank') },
+        { title: 'Download Resume PDF', icon: 'bx-download', type: 'Download', action: () => window.open('./assets/vivek-kumar-verma-resume.pdf', '_blank') },
         { title: 'Copy Email to Clipboard', icon: 'bx-copy', type: 'Action', action: () => { navigator.clipboard.writeText('vkumarverma670@gmail.com'); alert('Email vkumarverma670@gmail.com copied to clipboard!'); } },
         { title: 'Visit GitHub Profile', icon: 'bxl-github', type: 'External', action: () => window.open('https://github.com/VivekGitNinja', '_blank') },
         { title: 'Visit LinkedIn Profile', icon: 'bxl-linkedin', type: 'External', action: () => window.open('https://www.linkedin.com/in/vivekumarverma', '_blank') }

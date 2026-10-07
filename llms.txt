@@ -1,0 +1,39 @@
+# Vivek Kumar Verma
+
+> Official portfolio and knowledge profile of Vivek Kumar Verma — Developer Relations Manager, Full-Stack AI Engineer, and Founder of NX-913. Based in Greater Noida, Uttar Pradesh, India.
+
+## Identity
+
+- Full name: Vivek Kumar Verma
+- Also known as: Vivek, Vivek Kumar, VivekGitNinja
+- Location: Greater Noida, Uttar Pradesh, India
+- Email: vkumarverma670@gmail.com
+- Website: https://vivekverma.dev/
+
+## Roles
+
+- Developer Relations (DevRel) Manager at DevNovate Technologies (remote)
+- Software Development Intern at Techxoetic LLC, Dubai (remote)
+- Founder of NX-913 — Event & Hackathon Management Platform (https://nx-913.com)
+- Chapter President of HackWithIndia NIET (700+ member developer community)
+- B.Tech Computer Science Engineering, Noida Institute of Engineering & Technology (2023–2027)
+
+## Expertise
+
+Full-stack development (Next.js, TypeScript, Node.js, Express.js, MongoDB, Redis, BullMQ), AI/ML (Python, scikit-learn, Google Gemini API, RAG systems), Developer Relations, technical community leadership, hackathon organization and judging.
+
+## Key Projects
+
+- NX-913 Platform — full-stack hackathon and event management platform (Next.js, TypeScript, Node.js, MongoDB, Redis, BullMQ, Gemini API)
+- DispatchDesk — AI-powered sales inbox router (Python, FastAPI, Gemini, Docker)
+- Veda-AI — academic assessment platform
+- Multi-Disease Prediction System — ML medical diagnosis assistant (scikit-learn, Streamlit)
+
+## Profiles
+
+- Portfolio: https://vivekverma.dev/
+- GitHub: https://github.com/VivekGitNinja
+- LinkedIn: https://www.linkedin.com/in/vivekumarverma
+- X (Twitter): https://x.com/_vivek_33/
+- Instagram: https://www.instagram.com/_.vivek_33/
+- NX-913: https://nx-913.com
